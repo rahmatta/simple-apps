@@ -1,14 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training DevOps</title>
-    <link rel="stylesheet" href="stylesheet/style.css">
+  <title>Website Paling Nyeleneh</title>
+  <style>
+    body {
+      background: linear-gradient(45deg, magenta, lime, cyan);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: yellow;
+      text-align: center;
+      animation: spin 10s linear infinite;
+      overflow-x: hidden;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    h1 {
+      font-size: 50px;
+      animation: blink 0.5s infinite alternate;
+      text-shadow: 3px 3px red;
+    }
+
+    @keyframes blink {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+
+    .marquee {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      box-sizing: border-box;
+      animation: marquee 10s linear infinite;
+      background-color: hotpink;
+      color: black;
+      padding: 10px;
+      font-weight: bold;
+    }
+
+    @keyframes marquee {
+      0%   { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .button {
+      background-color: yellow;
+      color: purple;
+      font-size: 24px;
+      padding: 20px;
+      border: dashed 5px red;
+      border-radius: 50%;
+      cursor: pointer;
+      animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0); 
+      }
+      50% {
+        transform: translateY(-20px); 
+      }
+    }
+
+    .img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: dotted 5px black;
+      animation: wiggle 0.3s infinite;
+    }
+
+    @keyframes wiggle {
+      0% { transform: rotate(-10deg); }
+      50% { transform: rotate(10deg); }
+      100% { transform: rotate(-10deg); }
+    }
+  </style>
 </head>
 <body>
-    <img class="logo" src="./images/idn-logo.png" alt="idn-logo">
-     <h1>Belajar Devops IDN</h1>
+  <h1>Selamat Datang di Neraka UI</h1>
+  <div class="marquee">Ini adalah teks berjalan yang tak pernah berhenti memusingkan dunia desain!</div>
+  <p>Website ini dijamin bikin UX designer menyerah dalam 10 detik.</p>
+  <button class="button">Jangan Klik Saya</button>
+  <br><br>
+  <img class="img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Emojione_1F47B.svg/240px-Emojione_1F47B.svg.png" alt="Hantu">
 </body>
 </html>
