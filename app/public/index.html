@@ -1,91 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Website Paling Nyeleneh</title>
+  <title>Dimensi Kacau</title>
   <style>
     body {
-      background: linear-gradient(45deg, magenta, lime, cyan);
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      color: yellow;
-      text-align: center;
-      animation: spin 10s linear infinite;
-      overflow-x: hidden;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    h1 {
-      font-size: 50px;
-      animation: blink 0.5s infinite alternate;
-      text-shadow: 3px 3px red;
-    }
-
-    @keyframes blink {
-      from { opacity: 1; }
-      to { opacity: 0; }
-    }
-
-    .marquee {
-      width: 100%;
+      margin: 0;
       overflow: hidden;
-      white-space: nowrap;
-      box-sizing: border-box;
-      animation: marquee 10s linear infinite;
-      background-color: hotpink;
-      color: black;
-      padding: 10px;
+      font-family: "Papyrus", cursive;
+      background-color: black;
+      transition: all 1s;
+    }
+
+    #runnerText {
+      position: absolute;
+      color: lime;
+      font-size: 40px;
       font-weight: bold;
+      transition: all 0.2s ease-in-out;
+      pointer-events: none;
+      text-shadow: 2px 2px magenta;
     }
 
-    @keyframes marquee {
-      0%   { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
+    .weirdButton {
+      position: absolute;
+      padding: 30px;
+      background: repeating-conic-gradient(yellow, red 10%, blue 20%);
+      border: 10px groove lime;
+      font-size: 20px;
+      color: white;
+      cursor: crosshair;
+      animation: pulse 0.5s infinite;
     }
 
-    .button {
-      background-color: yellow;
-      color: purple;
-      font-size: 24px;
-      padding: 20px;
-      border: dashed 5px red;
-      border-radius: 50%;
-      cursor: pointer;
-      animation: bounce 1s infinite;
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1) rotate(5deg); }
+      100% { transform: scale(1); }
     }
 
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0); 
-      }
-      50% {
-        transform: translateY(-20px); 
-      }
-    }
-
-    .img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      border: dotted 5px black;
-      animation: wiggle 0.3s infinite;
-    }
-
-    @keyframes wiggle {
-      0% { transform: rotate(-10deg); }
-      50% { transform: rotate(10deg); }
-      100% { transform: rotate(-10deg); }
+    #randomImg {
+      position: absolute;
+      width: 150px;
+      border: dashed 5px pink;
+      display: none;
     }
   </style>
 </head>
 <body>
-  <h1>Selamat Datang di Neraka UI</h1>
-  <div class="marquee">Ini adalah teks berjalan yang tak pernah berhenti memusingkan dunia desain!</div>
-  <p>Website ini dijamin bikin UX designer menyerah dalam 10 detik.</p>
-  <button class="button">Jangan Klik Saya</button>
-  <br><br>
-  <img class="img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Emojione_1F47B.svg/240px-Emojione_1F47B.svg.png" alt="Hantu">
+  <div id="runnerText">🌀 Tangkap Aku Kalau Bisa!</div>
+  <button class="weirdButton" id="weirdButton">Klik Aku Untuk Kacaukan Dunia</button>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Question_book-4.svg" id="randomImg">
+
+  <audio id="laughSound">
+    <source src="https://www.myinstants.com/media/sounds/trollolol.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const runner = document.getElementById('runnerText');
+    const btn = document.getElementById('weirdButton');
+    const img = document.getElementById('randomImg');
+    const audio = document.getElementById('laughSound');
+
+    document.body.addEventListener('mousemove', e => {
+      const x = e.clientX + (Math.random() * 100 - 50);
+      const y = e.clientY + (Math.random() * 100 - 50);
+      runner.style.left = `${x}px`;
+      runner.style.top = `${y}px`;
+    });
+
+    btn.addEventListener('click', () => {
+      document.body.style.backgroundColor = getRandomColor();
+      document.body.style.transform = Math.random() > 0.5 ? 'scaleX(-1)' : 'scaleY(-1)';
+      img.style.left = Math.random() * window.innerWidth + 'px';
+      img.style.top = Math.random() * window.innerHeight + 'px';
+      img.style.display = Math.random() > 0.5 ? 'block' : 'none';
+      audio.play();
+    });
+
+    setInterval(() => {
+      runner.style.color = getRandomColor();
+      btn.style.borderColor = getRandomColor();
+    }, 500);
+
+    function getRandomColor() {
+      return 'hsl(' + Math.floor(Math.random() * 360) + ', 100%, 50%)';
+    }
+  </script>
 </body>
 </html>
